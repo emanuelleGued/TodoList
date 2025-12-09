@@ -1,0 +1,93 @@
+/* Adicione no App.css ou mantenha no index.css */
+.hero-illustration {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-illustration .display-1 {
+  font-size: 8rem;
+  opacity: 0.9;
+}
+
+.floating-icon {
+  position: absolute;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.card-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background: linear-gradient(45deg, rgba(67, 97, 238, 0.1), rgba(58, 12, 163, 0.05));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-number {
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.todo-item {
+  border-left: 5px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.todo-item:hover {
+  border-left-color: var(--secondary-color);
+  background-color: rgba(67, 97, 238, 0.05);
+}
+
+.todo-item.completed {
+  border-left-color: var(--success-color);
+  opacity: 0.8;
+}
+
+.custom-checkbox {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.custom-checkbox:hover {
+  transform: scale(1.1);
+}
+
+.empty-state {
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9));
+  border-radius: 15px;
+  border: 2px dashed #dee2e6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .btn-group .btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
