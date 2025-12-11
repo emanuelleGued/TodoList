@@ -1,0 +1,147 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3a0ca3;
+  --success-color: #06d6a0;
+  --warning-color: #ffd60a;
+  --danger-color: #ef476f;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Hero Illustration */
+.hero-illustration {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-illustration .display-1 {
+  font-size: 8rem;
+  opacity: 0.9;
+}
+
+.floating-icon {
+  position: absolute;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Cards */
+.card-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background: linear-gradient(45deg, rgba(67, 97, 238, 0.1), rgba(58, 12, 163, 0.05));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-number {
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Todo Items */
+.todo-item {
+  border-left: 5px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.todo-item:hover {
+  border-left-color: var(--secondary-color);
+  background-color: rgba(67, 97, 238, 0.05);
+}
+
+.todo-item.completed {
+  border-left-color: var(--success-color);
+  opacity: 0.8;
+}
+
+.custom-checkbox {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.custom-checkbox:hover {
+  transform: scale(1.1);
+}
+
+/* Empty State */
+.empty-state {
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9));
+  border-radius: 15px;
+  border: 2px dashed #dee2e6;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2.5rem;
+  }
+
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

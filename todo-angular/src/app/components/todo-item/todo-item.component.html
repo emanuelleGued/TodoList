@@ -1,0 +1,65 @@
+<div class="card mb-3 todo-item" [class.completed]="todo.completed">
+  <div class="card-body">
+    <div class="d-flex align-items-start">
+      <!-- Checkbox -->
+      <div class="me-3">
+        <div class="custom-checkbox" (click)="toggle.emit()" style="cursor: pointer;">
+          <i
+            class="bi"
+            [class.bi-check-circle-fill]="todo.completed"
+            [class.bi-circle]="!todo.completed"
+            [class.text-success]="todo.completed"
+            [class.text-muted]="!todo.completed"
+            style="font-size: 1.5rem;"
+          ></i>
+        </div>
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="flex-grow-1">
+        <h5
+          class="mb-1"
+          [class.text-decoration-line-through]="todo.completed"
+          [class.text-muted]="todo.completed"
+        >
+          {{ todo.title }}
+        </h5>
+
+        <p
+          *ngIf="todo.description"
+          class="text-muted mb-2"
+          [class.text-decoration-line-through]="todo.completed"
+        >
+          {{ todo.description }}
+        </p>
+
+        <!-- Metadata -->
+        <div class="small text-muted d-flex align-items-center">
+          <i class="bi bi-calendar me-1"></i>
+          <span>
+            Criada em {{ formatDate(todo.createdAt) }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Ações -->
+      <div class="btn-group ms-3">
+        <button
+          class="btn btn-outline-primary btn-sm"
+          (click)="edit.emit()"
+          title="Editar"
+        >
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button
+          class="btn btn-outline-danger btn-sm"
+          (click)="delete.emit()"
+          title="Excluir"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

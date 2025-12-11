@@ -1,0 +1,89 @@
+<div class="todo-list">
+  <!-- Filtros -->
+  <div class="filters mb-4">
+    <div class="btn-group" role="group">
+      <button
+        type="button"
+        class="btn rounded"
+        [class.btn-primary]="filter === 'all'"
+        [class.btn-outline-primary]="filter !== 'all'"
+        (click)="setFilter('all')"
+      >
+        <i class="bi bi-list-ul me-1"></i>
+        Todas ({{ stats.total }})
+      </button>
+      <button
+        type="button"
+        class="btn rounded mx-2"
+        [class.btn-primary]="filter === 'pending'"
+        [class.btn-outline-primary]="filter !== 'pending'"
+        (click)="setFilter('pending')"
+      >
+        <i class="bi bi-clock me-1"></i>
+        Pendentes ({{ stats.pending }})
+      </button>
+      <button
+        type="button"
+        class="btn rounded"
+        [class.btn-primary]="filter === 'completed'"
+        [class.btn-outline-primary]="filter !== 'completed'"
+        (click)="setFilter('completed')"
+      >
+        <i class="bi bi-check2-all me-1"></i>
+        Concluídas ({{ stats.completed }})
+      </button>
+    </div>
+  </div>
+
+  <!-- Estatísticas -->
+  <div class="card mb-4 border-0" style="background: linear-gradient(45deg, rgba(67, 97, 238, 0.1), rgba(58, 12, 163, 0.05))">
+    <div class="card-body p-3">
+      <div class="row text-center">
+        <div class="col-4">
+          <div class="fw-bold fs-4">{{ stats.total }}</div>
+          <small class="text-muted">Total</small>
+        </div>
+        <div class="col-4">
+          <div class="fw-bold fs-4 text-success">{{ stats.completed }}</div>
+          <small class="text-muted">Concluídas</small>
+        </div>
+        <div class="col-4">
+          <div class="fw-bold fs-4 text-warning">{{ stats.pending }}</div>
+          <small class="text-muted">Pendentes</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista vazia -->
+  <div *ngIf="filteredTodos.length === 0" class="empty-state text-center py-5">
+    <i class="bi bi-inbox display-1 text-muted mb-3"></i>
+    <h4 class="fw-bold mb-2">
+      {{ filter === 'completed' ? 'Nenhuma tarefa concluída ainda' : 'Nenhuma tarefa encontrada' }}
+    </h4>
+    <p class="text-muted mb-4">
+      {{ filter === 'all' ? 'Comece criando sua primeira tarefa!' :
+         filter === 'pending' ? 'Todas as tarefas estão concluídas!' :
+         'Complete algumas tarefas para vê-las aqui.' }}
+    </p>
+    <button
+      *ngIf="filter !== 'all'"
+      class="btn btn-outline-primary"
+      (click)="setFilter('all')"
+    >
+      <i class="bi bi-eye me-1"></i>
+      Ver todas as tarefas
+    </button>
+  </div>
+
+  <!-- Lista de tarefas -->
+  <div *ngFor="let todo of filteredTodos; let i = index" class="fade-in" [style.animation-delay]="(i * 0.1) + 's'">
+    <app-todo-item
+      [todo]="todo"
+      (toggle)="toggleTodo.emit(todo.id!)"
+      (edit)="editTodo.emit(todo)"
+      (delete)="deleteTodo.emit(todo.id!)"
+    ></app-todo-item>
+  </div>
+</div>
+
